@@ -1,4 +1,4 @@
-# Dynamic equation with Lagrange for a general kinematic chain defined by sets of DH parameters. 
+# Dynamic equation with Lagrange-Euler for a general kinematic chain defined by sets of DH parameters. 
 
 Simple and straight-forward implementation of DH-parameters in MATLAB  
 This can be used to execute forward kinematics of the robot to find position and orientation of every link of the robot.  
