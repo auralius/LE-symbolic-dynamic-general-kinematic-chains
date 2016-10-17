@@ -1,4 +1,4 @@
-function x_dot = simulate_dynamics(t, x, n, u, M, solutions)
+function x_dot = simulate_dynamics(t, x, n, u, M, solutions, tf)
 
 theta_sym = sym('theta', [n 1]);
 dtheta_sym = sym('dtheta', [n 1]);
@@ -24,6 +24,16 @@ for i = 1 : n
     x_dot(j) = x(i*2);
     x_dot(j+1) = temp(i);
     j = j + 2;
+end
+
+if nargin > 6
+    persistent h;
+
+    if isempty(h)
+       h = waitbar(0,'Solving ODE...');
+    else
+       waitbar(t/tf, h, 'Solving ODE...');
+    end
 end
 
 end

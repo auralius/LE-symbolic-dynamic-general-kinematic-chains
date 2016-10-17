@@ -12,7 +12,7 @@ a = [1];
 base = [0; 0; 0];
 type = ['r'];
 
-disp('Finding solutoins...');
+disp('Finding solutions...');
 solutions = compute_dynamics(n, a, d, alpha, offset);
 
 init_t = 0;
