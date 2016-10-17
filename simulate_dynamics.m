@@ -26,9 +26,9 @@ for i = 1 : n
     j = j + 2;
 end
 
-if nargin > 6
-    persistent h;
+persistent h;
 
+if nargin > 6
     if isempty(h)
        h = waitbar(0,'Solving ODE...');
     else
