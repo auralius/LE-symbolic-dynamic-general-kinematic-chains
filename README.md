@@ -21,3 +21,7 @@ manurung.auralius@gmail.com
 Notes:  
 All position coordinates, mass matrix M. and generalized forces u are in column vector (n x 1)!  
 Example: for a 3-DOF robot, M = [1; 1; 1], x0 = [0; 0; 0; 0; 0; 0] and so on and so forth.  
+
+Main references:  
+http://youngmok.com/lagrange-equation-by-matlab-with-examples/
+
