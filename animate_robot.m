@@ -9,7 +9,7 @@ view([0 0 1]);
 
 filename = 'recorded.gif';
 
-for i = 1 : 10 : length(x)
+for i = 1 : 1 : length(x)
     for j = 1 : length(d)
         r = serial_arm_actuate_joint(r, j, x(i, (j*2)-1) );
     end

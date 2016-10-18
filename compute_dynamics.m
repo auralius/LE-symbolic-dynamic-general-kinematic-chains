@@ -3,7 +3,8 @@ function solutions = compute_dynamics(n, a, d, alpha, offset)
 % Dynamic of a kinematic chain, given by DH-parameters.
 
 %% Mass
-M = sym('M%d', [1 n]);
+M = sym('M', [1 n]);
+B = sym('B', [1 n]);
 syms g;
 G = [0 g 0];
 
@@ -16,6 +17,7 @@ u = sym('u', [n 1]);
 dTdq =  sym('dTdq%d', [n 1]);
 dVdq =  sym('dVdq%d', [n 1]);
 dTdqdot =  sym('dTdq%ddot', [n 1]);
+dPdqdot =  sym('dPdq%ddot', [n 1]);
 
 %% DH transformation
 T = eye(4,4);
@@ -42,12 +44,16 @@ end
 x = simplify(x);
 v = simplify(v);
 
-%% Kinetic and potential energy
-T = sum(0.5 *M .* sum(v.^2));
-V = sum(M(j)*G*x);
+%% Kinetic. potential, dissipative energy
+T = sum(0.5 * M .* sum(v.^2)); % Kinetic
+V = sum(M(j)* G * x);            % Potential
+P = sum(0.5 * B .* sum(v.^2)); % Dissipative
 
 T = simplify(T);
 V = simplify(V);
+P = simplify(P);
+
+
 
 %% Lagrange-Euler implementation
 for j = 1 : n
@@ -56,6 +62,7 @@ for j = 1 : n
     dTdqdot(j) = diff(T, dtheta(j));
     dTdq(j) = diff(T, theta(j));
     dVdq(j) = diff(V, theta(j));
+    dPdqdot(j) = diff(P, dtheta(j));
     
     for i = 1 :n
         ddtdTdqdot = ddtdTdqdot + ...
@@ -63,7 +70,7 @@ for j = 1 : n
             diff(dTdqdot(j), dtheta(i)) * ddtheta(i);
     end
     
-    eq(j) = simplify( ddtdTdqdot(j) - dVdq(j) + dTdq(j) - u(j));
+    eq(j) = simplify( ddtdTdqdot(j) - dVdq(j) + dTdq(j) - u(j) + dPdqdot(j));
 end
 
 allvar = symvar(ddtheta);
