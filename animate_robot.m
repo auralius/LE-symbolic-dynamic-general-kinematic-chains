@@ -1,6 +1,8 @@
-%%
-%--------------------------------------------------------------------------
 function animate_robot(d, a, alpha, offset, type, base, x)
+% Animate the kinematic chains. Additionally, a GIF file is created.
+% x is the output from the ODE solver that is called to run 
+%   simulate_dynamics function.
+
 r = serial_arm_init(d, a, alpha, offset, type, base);
 r = serial_arm_update(r);
 r = serial_arm_plot(r);

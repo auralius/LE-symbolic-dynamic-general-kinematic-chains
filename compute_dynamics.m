@@ -1,6 +1,6 @@
 function solutions = compute_dynamics(n, a, d, alpha, offset)
-
-% Dynamic of a kinematic chain, given by DH-parameters.
+% Dynamic of a kinematic chain, given by DH-parameters: a, d, alpha, and
+% offset. n is number of the joints.
 
 %% Mass
 M = sym('M', [1 n]);
