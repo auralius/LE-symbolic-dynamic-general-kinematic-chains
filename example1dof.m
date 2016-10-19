@@ -27,7 +27,7 @@ B = 0.5;
 u = 0;
 
 disp('Simulating the dynamics...');
-[t,x] = ode23(@simulate_dynamics,t_span,x0, [], n, u, M, B, solutions);
+[t,x] = ode23(@simulate_dynamics, t_span, x0, [], n, u, M, B, solutions);
 
 animate_robot(d, a, alpha, offset, type, base, x);
 

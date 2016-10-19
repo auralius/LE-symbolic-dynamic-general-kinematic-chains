@@ -15,8 +15,8 @@ function x_dot = simulate_dynamics(t, x, n, u, M, B, solutions, tf)
 theta_sym = sym('theta', [n 1]);
 dtheta_sym = sym('dtheta', [n 1]);
 u_sym = sym('u', [n 1]);
-M_sym = sym('M%d', [n 1]);
-B_sym = sym('B%d', [n 1]);
+M_sym = sym('M', [n 1]);
+B_sym = sym('B', [n 1]);
 g_sym = sym('g');
 
 from = [];
