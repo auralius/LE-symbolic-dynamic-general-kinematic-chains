@@ -11,9 +11,7 @@ Features:
 * Forward dynamics
 * Simple visualization, it can also be animated
 
-![Screenshot][sshot]
-
-[sshot]: https://raw.githubusercontent.com/auralius/matlab-dh-parameters/master/sshot.png "Screenshot"
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1-DPLmx6FWc/0.jpg)](https://www.youtube.com/watch?v=1-DPLmx6FWc)
 
 Auralius Manurung 
 manurung.auralius@gmail.com
