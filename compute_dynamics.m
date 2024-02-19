@@ -14,13 +14,14 @@ dtheta = sym('dtheta', [n 1]);
 ddtheta = sym('ddtheta', [n 1]);
 u = sym('u', [n 1]);
 
-dTdq =  sym('dTdq%d', [n 1]);
-dVdq =  sym('dVdq%d', [n 1]);
-dTdqdot =  sym('dTdq%ddot', [n 1]);
-dPdqdot =  sym('dPdq%ddot', [n 1]);
+dTdq =  sym('dTdq', [n 1]);
+dVdq =  sym('dVdq', [n 1]);
+dTdqdot =  sym('dTdqdot', [n 1]);
+dPdqdot =  sym('dPdqdot', [n 1]);
 
 %% DH transformation
 T = eye(4,4);
+x = sym(zeros(3,n));
 for j = 1 : n
     ct = cos(theta(j)+offset(j));
     st = sin(theta(j)+offset(j));
@@ -46,7 +47,7 @@ v = simplify(v);
 
 %% Kinetic. potential, dissipative energy
 T = sum(0.5 * M .* sum(v.^2)); % Kinetic
-V = sum(M(j)* G * x);            % Potential
+V = sum(M .* (G * x));         % Potential
 P = sum(0.5 * B .* sum(v.^2)); % Dissipative
 
 T = simplify(T);
@@ -84,11 +85,3 @@ else
         solutions(i) = simplify(getfield(solutions_, char(allvar(i))));
     end
 end
-
-
-
-
-
-
-
-
